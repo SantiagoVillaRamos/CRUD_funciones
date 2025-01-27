@@ -1,0 +1,20 @@
+{% extends "pages/base.html" %}
+{% block title %}usuario | {{person.perfil.name}}{% endblock %}
+{% load static %}
+{% block content %}
+<div class="form-container">
+    <div>
+        <h1>¡Hola '{{person.perfil.name}}'</h1>
+    </div>
+    <p>¿Quieres eliminar a <a href="{% url 'person_data' person.id %}">{{person.perfil.name}}</a>?</p>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{person.as_p}}
+        <div class="button-container">
+            <a href="{% url 'lists_person' %}" class="btn btn-primary">ir a la lista</a>
+            <button type="submit" class="btn btn-delete">Eliminar</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+

@@ -1,0 +1,28 @@
+{% extends "pages/base.html" %}
+{% load static %}
+{% block content %}
+    <table>
+        {{form.non_field_errors}}
+        <tr> 
+            <th><label for="name_id">Nombre:</label></th>
+            {{form.name.errors}}
+            <td>{{ form.name }}</td>
+        </tr>
+        <tr> 
+            <th><label for="cedula_id">Cedula:</label></th>
+            {{form.cedula.errors}}
+            <td>{{ form.cedula }}</td>    
+        </tr>
+        <tr>
+            <th><label for="email_id">Correo:</label></th>
+            {{form.email.errors}}
+            <td>{{ form.email }}</td>              
+        </tr>
+        <tr>
+            <th><label for="confirm_email_id">Confirmar:</label></th>
+            {{form.confirm_email.errors}}
+            <td>{{ form.confirm_email }}</td>        
+        </tr>
+    </table>
+{% endblock %}
+

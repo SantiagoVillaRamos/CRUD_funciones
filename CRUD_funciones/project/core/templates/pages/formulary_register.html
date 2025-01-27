@@ -1,0 +1,20 @@
+{% extends "pages/base.html" %}
+{% block title %}Registrate{% endblock %}
+{% load static %}
+{% block content %}
+<div class="form-container">
+    <div>
+        <h1>Registrate aqui</h1>
+    </div>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <!---etiqueta include que añade el formulario--->
+        {% include "include/formulary.html" %}
+        <div class="button-container">
+            <a href="{% url 'lists_person' %}" class="btn btn-update">ir a la lista</a>
+            <button type="submit">Registrate</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+

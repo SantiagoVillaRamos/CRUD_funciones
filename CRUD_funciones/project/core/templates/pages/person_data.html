@@ -1,0 +1,28 @@
+{% extends "pages/base.html" %}
+{% block title %}usuario | {{model.perfil.name}}{% endblock %}
+{% load static %}
+{% block content %}
+<div class="form-container">
+    <div>
+        <h1>¡Hola '{{model.perfil.name}}' tu registro se ha completado </h1>
+    </div>
+    <table>
+        <tr>
+            <th><h4>Nombre</h4></th>
+            <th><h4>Cedula</h4></th>
+            <th><h4>Correo</h4></th>
+        </tr>
+        <tr>
+            <td><h5>{{model.perfil.name}}</h5></td>
+            <td><h5>{{model.perfil.cedula}}</h5></td>
+            <td><h5>{{model.email}} </h5></td>
+        </tr>
+    </table>
+    <div class="button-container">
+        <a href="{% url 'lists_person' %}" class="btn btn-primary">ir a la lista</a> - 
+        <a href="{% url 'updated_person' model.id %}" class="btn btn-update">Actualizar</a>
+        <a href="{% url 'delete_person' model.id %}" class="btn btn-delete">Eliminar</a>
+    </div>
+</div>
+{% endblock %}
+

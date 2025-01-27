@@ -1,0 +1,35 @@
+{% extends "pages/base.html" %}
+{% block title %}usuarios{% endblock %}
+{% load static %}
+{% block content %}
+<div class="form-container">
+    <div class="header">
+        <h1>Lista de personas</h1>
+        <a href="{% url 'confirmation_emial' %}" class="btn btn-primary">ir al formulario</a>
+    </div>
+    
+    <ul class="person-list">
+        {% for data in page_obj %}
+            <li class="person-item">
+                <p class="person-info">
+                    <a href="{% url 'person_data' data.id %}" class="person-link">{{data.perfil.name}}</a> - 
+                    <a href="{% url 'updated_person' data.id %}" class="btn btn-update">Actualizar</a>
+                    <a href="{% url 'delete_person' data.id %}" class="btn btn-delete">Eliminar</a>
+                </p>
+            </li>
+        {% endfor %}
+    </ul>
+    <div>
+        <span>
+            {% if page_obj.has_previous %}
+                <a href="?page={{page_obj.previous_page_number}}">Anterior</a>
+            {% endif %}
+                Pagina {{page_obj.number}} de {{page_obj.paginator.num_pages}}
+            {% if page_obj.has_next %}
+                <a href="?page={{page_obj.next_page_number}}">Siguiente</a>
+            {% endif %}
+        </span>
+    </div>
+</div>
+{% endblock %}
+

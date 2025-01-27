@@ -1,0 +1,24 @@
+{% extends "pages/base.html" %}
+{% block title %}Actualizar{% endblock %}
+{% load static %}
+{% block content %}
+<div class="form-container">
+    <div>
+        <h1>¡Hola {{person.perfil.name}} aqui puedes actualizar tus datos</h1>
+    </div>
+    {% if message %}
+        <p style="color: red;">{{message}}</p>
+    {% endif %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <!---etiqueta include() que añade el formulario--->
+        {% include "include/formulary_updated.html" %}
+        <div class="button-container">
+            <a href="{% url 'person_data' person.id %}" class="person-link">Perfil</a>
+            <p style="color: black">¿Deseas actualizar tu <a href="{% url 'password_updated' person.id %}" class="person-link">Contraseña</a>?</p>
+            <button type="submit">Actualizar</button>
+        </div>
+    </form> 
+</div>
+{% endblock %} 
+
